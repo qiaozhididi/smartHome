@@ -10,8 +10,15 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import iot.app.smarthome.R;
+import iot.app.smarthome.api.Api;
 import iot.app.smarthome.databinding.ActivityLoginBinding;
+import iot.app.smarthome.model.login.LoginRequest;
+import iot.app.smarthome.model.login.UserTokenVo;
+import iot.app.smarthome.model.message.ResMsg;
 import iot.app.smarthome.vm.login.LoginViewModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -47,5 +54,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        Api httpApi = Api.RETROFIT.create(Api.class);
+        LoginRequest req = new LoginRequest();
+        req.setUsername("");
+        req.setPassword("");
+        Call<ResMsg<UserTokenVo>> call = httpApi.login(req);
+        call.enqueue(new Callback<ResMsg<UserTokenVo>>() {
+            @Override
+            public void onResponse
+                    (Call<ResMsg<UserTokenVo>> call, Response<ResMsg<UserTokenVo>> response) {
+                ResMsg<UserTokenVo> resMsg = response.body();
+                if (resMsg.success()) {
+                    //TODO: 登录成功
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    //TODO: 登录失败
+                    Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResMsg<UserTokenVo>> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "网络似乎有问题哦", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

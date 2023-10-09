@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import iot.app.smarthome.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity1 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

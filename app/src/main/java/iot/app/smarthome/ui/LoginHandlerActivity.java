@@ -16,9 +16,9 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
+//import iot.app.smarthome.MainActivity;
 import iot.app.smarthome.R;
 import iot.app.smarthome.databinding.ActivityLoginBinding;
-import iot.app.smarthome.ui.login.LoginActivity;
 import iot.app.smarthome.vm.login.LoginViewModel;
 
 public class LoginHandlerActivity extends AppCompatActivity {
@@ -48,7 +48,7 @@ public class LoginHandlerActivity extends AppCompatActivity {
                 activity.progressBar.setVisibility(View.INVISIBLE);
                 activity.loginBtn.setEnabled(true);
                 activity.finish();
-                activity.startActivity(new Intent(activity, MainActivity.class));
+                activity.startActivity(new Intent(activity, MainActivity1.class));
             }
 
         }

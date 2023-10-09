@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">smartHome</string>
+    <!--    实验3.3-->
+    <!--    <string name="app_name">smartHome</string>-->
+    <!-- TODO: Remove or change this placeholder text -->
+    <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
+
+    <!--实验4.4-->
+    <string name="app_name">智慧家庭</string>
+    <string name="title_device">设备</string>
+    <string name="title_mine">我</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
