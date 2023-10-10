@@ -12,6 +12,7 @@ import retrofit2.http.POST;
 
 public interface Api {
     String BASE_URL="http://10.0.2.2:8098";
+//    String BASE_URL="http://localhost:8098";
 
     Retrofit RETROFIT = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
