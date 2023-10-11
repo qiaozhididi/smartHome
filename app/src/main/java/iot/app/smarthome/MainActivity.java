@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
 //            //否则跳转到 LoginActivity 重新登录。
 //            startActivity(new Intent(this, LoginActivity.class));
 //        }
-
+        Intent intent = getIntent();
+        String userid = intent.getStringExtra("userid");
+        Toast.makeText(this, "欢迎你" + userid, Toast.LENGTH_SHORT).show();
 
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);

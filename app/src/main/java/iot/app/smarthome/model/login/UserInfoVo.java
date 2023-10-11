@@ -1,51 +1,31 @@
 package iot.app.smarthome.model.login;
 
 public class UserInfoVo {
-    private String userId;
-    private String userPwd;
-    private String userName;
+    private String userid;
+    private String username;
+    private String avatar;
 
-    private String userSecret;
-    private String userAvatar;
-
-    public String getUserId() {
-        return userId;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
-    public String getUserPwd() {
-        return userPwd;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
-
-    public String getUserSecret() {
-        return userSecret;
-    }
-
-    public void setUserSecret(String userSecret) {
-        this.userSecret = userSecret;
-    }
-
-    public String getUserAvatar() {
-        return userAvatar;
-    }
-
-    public void setUserAvatar(String userAvatar) {
-        this.userAvatar = userAvatar;
-    }
-
 }

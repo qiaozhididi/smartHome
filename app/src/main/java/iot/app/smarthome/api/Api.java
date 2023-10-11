@@ -10,7 +10,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface Api {
     String BASE_URL = "http://10.0.2.2:8098";
@@ -32,6 +34,6 @@ public interface Api {
 
     //TODO:请参考上面的代码实现获取当前用户信息API的方法
     @GET("/curUserInfo")
-    Call<ResMsg<UserInfoVo>> getUserInfo(String token);
+    Call<ResMsg<UserInfoVo>> getUserInfo(@Query("token")String token);
 
 }

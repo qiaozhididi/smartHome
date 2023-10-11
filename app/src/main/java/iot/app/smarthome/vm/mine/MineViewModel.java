@@ -13,10 +13,4 @@ public class MineViewModel extends ViewModel {
         this.userInfo = new ObservableUserInfo();
     }
 
-    private UserInfoVo userInfoVo;
-
-    public void setUserInfo(UserInfoVo userInfo) {
-        this.userInfoVo = userInfo;
-
-    }
 }
