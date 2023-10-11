@@ -5,9 +5,9 @@ import java.util.Date;
 public class UserTokenVo {
     //TODO:请自行实现代码
     private String token;
-    private String username;
-    private String password;
-    private Date expireTime;
+    private String userId;
+    private Date expiredTime;
+    private Long expiredTs;
 
     public String getToken() {
         return token;
@@ -17,29 +17,30 @@ public class UserTokenVo {
         this.token = token;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Date getExpireTime() {
-        return expireTime;
+        return expiredTime;
     }
 
-    public void setExpireTime(Date expireTime) {
-        this.expireTime = expireTime;
+    public void setExpiredTime(Date expireTime) {
+        this.expiredTime = expiredTime;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public long getExpiredTs() {
+        return expiredTs;
+    }
+
+    public void setExpiredTS(Long expiredTs) {
+        this.expiredTs = expiredTs;
+    }
+
 }
 
 

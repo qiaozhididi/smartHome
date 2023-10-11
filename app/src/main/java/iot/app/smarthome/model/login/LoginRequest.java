@@ -4,19 +4,19 @@ public class LoginRequest {
     private String username;
     private String password;
 
-    public String getUsername() {
+    public String getUserName() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUserName(String username) {
         this.username = username;
     }
 
-    public String getPassword() {
+    public String getPassWord() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassWord(String password) {
         this.password = password;
     }
 }

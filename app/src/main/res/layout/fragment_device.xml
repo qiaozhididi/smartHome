@@ -14,6 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.device.DeviceFragment">
+        <!--        设备列表    -->
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

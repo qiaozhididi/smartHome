@@ -83,8 +83,8 @@ public class LoginActivity extends AppCompatActivity {
 //                Toast.makeText(LoginActivity.this, "ViewModel username:" + loginViewModel.getLoginVo().username.get(), Toast.LENGTH_SHORT).show();
                 Api httpApi = Api.RETROFIT.create(Api.class);
                 LoginRequest req = new LoginRequest();
-                req.setUsername(loginViewModel.getLoginVo().username.get());
-                req.setPassword(loginViewModel.getLoginVo().password.get());
+                req.setUserName(loginViewModel.getLoginVo().username.get());
+                req.setPassWord(loginViewModel.getLoginVo().password.get());
                 Call<ResMsg<UserTokenVo>> call = httpApi.login(req);
                 call.enqueue(new Callback<ResMsg<UserTokenVo>>() {
                     @Override
@@ -93,21 +93,22 @@ public class LoginActivity extends AppCompatActivity {
                         ResMsg<UserTokenVo> resMsg = response.body();
                         if (resMsg.success()) {
                             //TODO: 登录成功
-//                            UserTokenVo vo = resMsg.getData();
-//                            editor = getSharedPreferences("token", MODE_PRIVATE).edit();
-//                            editor.putString(PrefConst.KEY_CUR_USERID, vo.getUserId());
-//                            editor.putString(PrefConst.KEY_TOKEN, vo.getToken());
-//                            editor.putString(PrefConst.KEY_TOKEN_EXPIRED_TS, vo.getExpiredTs());
-//                            editor.apply();
-//                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                            intent.putExtra("userid", vo.getUserId());
-//                            progressBar.setVisibility(View.GONE);
-//                            loginBtn.setEnabled(true);
-//                            startActivity(intent);
+                            UserTokenVo vo = resMsg.getData();
+                            Long expiredTs = resMsg.getData().getExpiredTs();
+                            editor = getSharedPreferences(PrefConst.DEFAULT_FILE_NAME, MODE_PRIVATE).edit();
+                            editor.putString(PrefConst.KEY_CUR_USERID, vo.getUserId());
+                            editor.putString(PrefConst.KEY_TOKEN, vo.getToken());
+                            editor.putLong(PrefConst.KEY_TOKEN_EXPIRED_TS,expiredTs);
+                            editor.apply();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.putExtra("userid", vo.getUserId());
+                            progressBar.setVisibility(View.GONE);
+                            loginBtn.setEnabled(true);
+                            startActivity(intent);
                             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity1.class));
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         } else {
                             //TODO: 登录失败
                             progressBar.setVisibility(View.GONE);
