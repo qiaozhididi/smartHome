@@ -12,6 +12,8 @@
 
 文档地址：https://heis.gitee.io/docs/iot-android/iot-android-04
 
+==注意：==部分代码使用了实验5的某些功能。
+
 实验4.1 使用 Handler 实现多线程模拟登录
 
 实验4.3 SmartHome 项目使用 Retrofit 框架实现通过云平台 API 登录
