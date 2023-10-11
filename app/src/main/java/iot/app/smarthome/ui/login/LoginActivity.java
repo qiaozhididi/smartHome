@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                             (Call<ResMsg<UserTokenVo>> call, Response<ResMsg<UserTokenVo>> response) {
                         ResMsg<UserTokenVo> resMsg = response.body();
                         if (resMsg.success()) {
-                            //TODO: 登录成功
+                            //TODO: 登录成功并将数据通过SharedPreferences保存到data.xml文件中
                             UserTokenVo vo = resMsg.getData();
                             Long expiredTs = resMsg.getData().getExpiredTs();
                             editor = getSharedPreferences(PrefConst.DEFAULT_FILE_NAME, MODE_PRIVATE).edit();
@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
                             loginBtn.setEnabled(true);
                             startActivity(intent);
                             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         } else {
                             //TODO: 登录失败
                             progressBar.setVisibility(View.GONE);

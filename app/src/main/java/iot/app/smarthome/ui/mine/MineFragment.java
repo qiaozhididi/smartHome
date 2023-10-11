@@ -1,5 +1,6 @@
 package iot.app.smarthome.ui.mine;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -22,6 +24,7 @@ import com.bumptech.glide.request.transition.Transition;
 
 import java.io.File;
 
+import iot.app.smarthome.MainActivity;
 import iot.app.smarthome.R;
 import iot.app.smarthome.api.Api;
 import iot.app.smarthome.databinding.FragmentMineBinding;
@@ -41,9 +44,8 @@ public class MineFragment extends Fragment {
     private FragmentMineBinding binding;
     private MineViewModel mineViewModel;
 
-    private UserTokenVo userTokenVo;
 
-//    private SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -52,9 +54,10 @@ public class MineFragment extends Fragment {
         binding = FragmentMineBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         binding.setMineViewModel(mineViewModel);
-        //TODO：人人sharePreference亻呆存白勺亻直拿至刂token讠青求api获耳又用户亻言息
-//        String token = getActivity().getSharedPreferences("KEY_TOKEN", 0).getString("KEY_TOKEN", "");
-        String token = "9b47c26f80f56a30455892d9c842426b11e7f2b3ee5baa09bf25d73fd74fa3c3";
+        //TODO：从sharePreference保存的值拿到token请求API获取的用户信息
+        SharedPreferences pref = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
+        String token = pref.getString("KEY_TOKEN", "");
+//        String token = "9b47c26f80f56a30455892d9c842426b11e7f2b3ee5baa09bf25d73fd74fa3c3";
         Api httpApi = Api.RETROFIT.create(Api.class);
         Call<ResMsg<UserInfoVo>> call = httpApi.getUserInfo(token);
         call.enqueue(new Callback<ResMsg<UserInfoVo>>() {
@@ -64,30 +67,32 @@ public class MineFragment extends Fragment {
                 ResMsg<UserInfoVo> resMsg = response.body();
                 if (resMsg.success()) {
                     //显示获取的用户信息
-                    mineViewModel.userInfo.userid.set(resMsg.getData().getUserid());
-                    mineViewModel.userInfo.username.set(resMsg.getData().getUsername());
-                    mineViewModel.userInfo.useravatar.set(resMsg.getData().getAvatar());
+                    UserInfoVo userInfo = resMsg.getData();
+                    mineViewModel.userInfo.userid.set(userInfo.getUserid());
+                    mineViewModel.userInfo.username.set(userInfo.getUsername());
+                    mineViewModel.userInfo.useravatar.set(userInfo.getAvatar());
                     //获取头像
                     ImageView imgView = root.findViewById(R.id.myAvatar);
                     String avatar = mineViewModel.userInfo.useravatar.get();
                     Glide.with(MineFragment.this).asBitmap().load(Api.BASE_URL + avatar).into(imgView);
-                    Glide.with(MineFragment.this).asBitmap().load(Api.BASE_URL + avatar).into(new CustomTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+
+                    //使用Bitmap作为图片格式，并保存到本地。
+//                    Glide.with(MineFragment.this).asBitmap().load(Api.BASE_URL + avatar).into(new CustomTarget<Bitmap>() {
+//                        @Override
+//                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
 //                            File avatarFile = FileUtils.saveAvatar(resource, mineViewModel.getUserInfo().getUserid() + ".png");
-                            UserInfoVo userInfo = new UserInfoVo();
-                            userInfo.setUsername(mineViewModel.userInfo.username.get());
-                            userInfo.setUserid(mineViewModel.userInfo.userid.get());
+//                            userInfo.setUsername(mineViewModel.userInfo.username.get());
+//                            userInfo.setUserid(mineViewModel.userInfo.userid.get());
 //                            userInfo.setAvatar(avatarFile.getAbsolutePath());
-                            imgView.setImageBitmap(resource);
-                        }
+//                            imgView.setImageBitmap(resource);
+//                        }
 
-                        @Override
-                        public void onLoadCleared(@Nullable Drawable placeholder) {
-
-                        }
-                    });
-                    Toast.makeText(getActivity(), "请求成功", Toast.LENGTH_SHORT).show();
+//                        @Override
+//                        public void onLoadCleared(@Nullable Drawable placeholder) {
+//
+//                        }
+//                    });
+                    initView();
                 }
             }
 
@@ -98,10 +103,25 @@ public class MineFragment extends Fragment {
             }
         });
 
-
-//
-
         return root;
+    }
+
+    //刷新用户信息
+    public void initView() {
+        swipeRefreshLayout = binding.getRoot().findViewById(R.id.mine_swipe_view);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //TODO:完成刷新触发代码
+                swipeRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1500);
+                Toast.makeText(getActivity(), "刷新用户信息成功", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void onResume() {
@@ -110,12 +130,6 @@ public class MineFragment extends Fragment {
 
     }
 
-    //    @Override
-    public void onRefresh() {
-        //TODO: 完成刷新触发代码
-//        swipeRefreshLayout.setRefreshing(false);
-//        mineViewModel.refresh();
-    }
 
     @Override
     public void onDestroyView() {
