@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         String token = pref.getString("KEY_TOKEN", "");
         if (!"".equals(token) && new Date().getTime() < tokenExpiredTs) {
             //如果令牌不为空，而且令牌没过期，正常启动 MainActivity
-            startActivities(new Intent[]{new Intent(this, MainActivity.class)});
             Intent intent = getIntent();
             String userid = intent.getStringExtra("userid");
             Toast.makeText(this, "欢迎你" + userid, Toast.LENGTH_SHORT).show();

@@ -1,6 +1,6 @@
 # 《物联网移动APP设计及开发》课程实验代码-----SmartPhone
 
-更新时间：2023年10月11日
+更新时间：2023年10月12日 23点24分
 
 ##### Part 3 - 物联网移动App架构设计 
 
@@ -21,3 +21,9 @@
 实验4.4 改进 SmartHome 项目的 MainActivity
 
 实验4.5 实现 SmartHome 项目访问云平台 API 获取用户个人信息和头像
+
+#### Part 5 - 安卓数据存储
+
+实验5.1 SmartHome 项目使用 Intent 传递用户名给 MainActivity
+
+实验5.2 SmartHome 项目实现登录以后使用 SharedPreferences 保存用户信息
