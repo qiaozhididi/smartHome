@@ -26,21 +26,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //实验5.2
-//        SharedPreferences pref = getSharedPreferences(LoginActivity.PrefConst.DEFAULT_FILE_NAME, MODE_PRIVATE);
-//        long tokenExpiredTs = pref.getLong(LoginActivity.PrefConst.KEY_TOKEN_EXPIRED_TS, 0L);
-//        String token = pref.getString(LoginActivity.PrefConst.KEY_TOKEN, "");
-//        if (!token.equals(token) && new Date().getTime() < tokenExpiredTs) {
-//            //如果令牌不为空，而且令牌没过期，正常启动 MainActivity
-//            startActivities(new Intent[]{new Intent(this, MainActivity.class)});
-//        } else {
-//            //否则跳转到 LoginActivity 重新登录。
-//            startActivity(new Intent(this, LoginActivity.class));
-//        }
-        Intent intent = getIntent();
-        String userid = intent.getStringExtra("userid");
-        Toast.makeText(this, "欢迎你" + userid, Toast.LENGTH_SHORT).show();
-
+        //实验5 .2
+        SharedPreferences pref = getSharedPreferences("data", MODE_PRIVATE);
+        long tokenExpiredTs = pref.getLong("KEY_TOKEN_EXPIRED_TS", 0L);
+        String token = pref.getString("KEY_TOKEN", "");
+        if (!"".equals(token) && new Date().getTime() < tokenExpiredTs) {
+            //如果令牌不为空，而且令牌没过期，正常启动 MainActivity
+            startActivities(new Intent[]{new Intent(this, MainActivity.class)});
+            Intent intent = getIntent();
+            String userid = intent.getStringExtra("userid");
+            Toast.makeText(this, "欢迎你" + userid, Toast.LENGTH_SHORT).show();
+        } else {
+            //否则跳转到 LoginActivity 重新登录。
+            startActivity(new Intent(this, LoginActivity.class));
+        }
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
