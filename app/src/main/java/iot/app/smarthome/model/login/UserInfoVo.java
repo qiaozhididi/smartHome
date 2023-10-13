@@ -1,9 +1,20 @@
 package iot.app.smarthome.model.login;
 
-public class UserInfoVo {
+import org.litepal.crud.LitePalSupport;
+
+public class UserInfoVo extends LitePalSupport {
+    private long id;
     private String userid;
     private String username;
     private String avatar;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUserid() {
         return userid;
@@ -28,4 +39,5 @@ public class UserInfoVo {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+
 }

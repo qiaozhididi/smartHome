@@ -14,8 +14,9 @@
         android:id="@+id/mine_swipe_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        tools:context=".ui.mine.MineFragment">
+        tools:context=".ui.mine.MineFragment"
+        tools:ignore="MissingConstraints">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,14 +27,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:src="@tools:sample/avatars" />
+
             <TextView
                 android:id="@+id/myUserAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={mineViewModel.userInfo.useravatar}"
-                android:visibility="invisible"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/myUserName"

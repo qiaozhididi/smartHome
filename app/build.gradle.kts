@@ -53,6 +53,7 @@ dependencies {
     implementation ("androidx.legacy:legacy-support-v4:1.0.0")
     //引入Glide
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation ("org.litepal.guolindev:core:3.2.3")
 
 
 //    //修改kotlin-stdlib-jdk加载方式

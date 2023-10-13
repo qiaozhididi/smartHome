@@ -1,6 +1,6 @@
 # 《物联网移动APP设计及开发》课程实验代码-----SmartPhone
 
-更新时间：2023年10月12日 23点24分
+更新时间：2023年10月13日 22点48分
 
 ##### Part 3 - 物联网移动App架构设计 
 
@@ -27,3 +27,7 @@
 实验5.1 SmartHome 项目使用 Intent 传递用户名给 MainActivity
 
 实验5.2 SmartHome 项目实现登录以后使用 SharedPreferences 保存用户信息
+
+实验5.3 SmartHome 项目使用 LitePal 保存当前用户信息到设备(还没实现连接SQLite并保存，只验证了litepal的功能)
+
+实验5.4 SmartHome 项目保存当前登录用户的头像到设备
