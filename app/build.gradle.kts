@@ -38,6 +38,25 @@ android {
 //        dataBinding = true
 //    }
 
+//    kts自定义构建apk的名字
+//    方法①  虽然能用但是提示JAVA已经弃用了。
+//    applicationVariants.all {
+//        outputs.withType<com.android.build.gradle.api.ApkVariantOutput> {
+//            outputFileName = "SmartHome_${buildType.name}_v${versionName}.apk"
+//        }
+//    }
+//    方法②
+    android.applicationVariants.all {
+        // 编译类型
+        val buildType = this.buildType.name
+        outputs.all {
+            // 判断是否是输出 apk 类型
+            if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
+                this.outputFileName = "SmartHome_${buildType}_${defaultConfig.versionName}.apk"
+            }
+        }
+
+    }
 }
 
 dependencies {
@@ -59,7 +78,7 @@ dependencies {
     implementation("org.litepal.guolindev:core:3.2.3")
 
 //    导入MPAndroidChart 绘制图表
-    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 //    //修改kotlin-stdlib-jdk加载方式
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
