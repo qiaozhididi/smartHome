@@ -1,7 +1,7 @@
 package iot.app.smarthome.api;
 
 import iot.app.smarthome.model.login.LoginRequest;
-import iot.app.smarthome.model.login.UserInfoVo;
+import iot.app.smarthome.model.user.UserInfoVo;
 import iot.app.smarthome.model.login.UserTokenVo;
 import iot.app.smarthome.model.message.ResMsg;
 //import iot.app.smarthome.model.user.UserInfoVo;
@@ -10,7 +10,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 

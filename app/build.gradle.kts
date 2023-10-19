@@ -34,6 +34,9 @@ android {
     dataBinding {
         enable = true
     }
+//    buildFeatures {
+//        dataBinding = true
+//    }
 
 }
 
@@ -47,14 +50,16 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.squareup.retrofit2:retrofit:2.4.0")
     implementation("com.squareup.retrofit2:converter-gson:2.1.0")
-    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation ("androidx.navigation:navigation-fragment:2.3.5")
-    implementation ("androidx.navigation:navigation-ui:2.3.5")
-    implementation ("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("androidx.navigation:navigation-fragment:2.3.5")
+    implementation("androidx.navigation:navigation-ui:2.3.5")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     //引入Glide
-    implementation ("com.github.bumptech.glide:glide:4.12.0")
-    implementation ("org.litepal.guolindev:core:3.2.3")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("org.litepal.guolindev:core:3.2.3")
 
+//    导入MPAndroidChart 绘制图表
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 //    //修改kotlin-stdlib-jdk加载方式
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))

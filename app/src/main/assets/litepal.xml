@@ -4,7 +4,7 @@
     	定义应用程序的数据库名称。默认情况下,每个数据库名称应以.db结束。如果你没有名字数据库以.db结束, LitePal将为您自动加上后缀。例如:
     	<dbname value="demo" />
     -->
-    <dbname value="SmartHome" />
+    <dbname value="smarthome" />
 
     <!--
         定义数据库的版本。每一次当你想要数据库升级时,版本标记会有帮助。
@@ -24,7 +24,6 @@
         默认值为“内部 internal”。 例如：
         <storage value =“external”/>
     -->
-<!--    <storage velue ="external" />-->
 
 </litepal>
 

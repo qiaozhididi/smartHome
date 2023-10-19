@@ -21,14 +21,13 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
 import org.litepal.LitePal;
-import org.litepal.LitePalDB;
 
 import java.io.File;
 
 import iot.app.smarthome.R;
 import iot.app.smarthome.api.Api;
 import iot.app.smarthome.databinding.FragmentMineBinding;
-import iot.app.smarthome.model.login.UserInfoVo;
+import iot.app.smarthome.model.user.UserInfoVo;
 import iot.app.smarthome.model.message.ResMsg;
 import iot.app.smarthome.model.utils.FileUtils;
 import iot.app.smarthome.vm.mine.MineViewModel;
@@ -103,10 +102,9 @@ public class MineFragment extends Fragment {
         return root;
     }
 
-    //    litepal保存数据
-    public void insertCurUserIntoDB(UserInfoVo userInfoVo) {
-//        LitePal.deleteAll(UserInfoVo.class);
-        userInfoVo.save();
+    public void insertCurUserIntoDB(UserInfoVo userInfo) {
+        LitePal.deleteAll(UserInfoVo.class);
+        userInfo.save();
     }
 
     //刷新用户信息
