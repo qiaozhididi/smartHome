@@ -11,10 +11,11 @@
         修改模型中定义的映射标签“version”,就使版本值+ 1,数据库的升级将自动处理而不会出现问题。例如:
     	<version value="1" />
     -->
-    <version value="1" />
+    <version value="2" />
 
     <list>
         <mapping class="iot.app.smarthome.model.user.UserInfoVo" />
+        <mapping class="iot.app.smarthome.model.device.TempVo"  />
     </list>
 
     <!--
