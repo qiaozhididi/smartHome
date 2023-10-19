@@ -40,14 +40,14 @@ public class ThermometerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_thermometer);
         LineChart lineChart = findViewById(R.id.lineChart);
         List<Entry> list = new ArrayList<>();
-        //其中两个数字对应的分别是 X轴 Y轴
+        //其中两个数字对应的分别是 X轴 Y轴。时间（小时）和温度
 //        list.add(new Entry(7.0F, 26F));
-////        list.add(new Entry(8.0F, 29F));
-////        list.add(new Entry(9.0F, 30F));
-////        list.add(new Entry(10.0F, 31F));
-////        list.add(new Entry(11.0F, 32F));
+//        list.add(new Entry(8.0F, 29F));
+//        list.add(new Entry(9.0F, 30F));
+//        list.add(new Entry(10.0F, 31F));
+//        list.add(new Entry(11.0F, 32F));
 
-        //TODO： tempvo获取数据并使用litepal保存到sqlite，保存完毕之后在获取
+        //TODO： tempvo获取数据并使用litepal保存到本地sqlite，然后在通过数据库获取保存在本地的数据
 //        LitePal.deleteAll(TempVo.class);
 //        List<TempVo> tempVoList = new ArrayList<>();
 //        for (Entry entry : list) {
@@ -103,7 +103,7 @@ public class ThermometerActivity extends AppCompatActivity {
                 int hours = Integer.parseInt(parts[0]);
                 int min = Integer.parseInt(parts[1]);
                 String minutes = String.format("%02d", min);
-                String timeStr = hours + ":" + minutes;
+                String timeStr = hours + ":" + minutes;//合并成H:mm格式
                 return timeStr;
 
             }
