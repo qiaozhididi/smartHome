@@ -1,6 +1,7 @@
 package iot.app.smarthome.ui.mine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,12 +26,14 @@ import org.litepal.LitePal;
 
 import java.io.File;
 
+import iot.app.smarthome.MainActivity;
 import iot.app.smarthome.R;
 import iot.app.smarthome.api.Api;
 import iot.app.smarthome.databinding.FragmentMineBinding;
 import iot.app.smarthome.model.user.UserInfoVo;
 import iot.app.smarthome.model.message.ResMsg;
 import iot.app.smarthome.model.utils.FileUtils;
+import iot.app.smarthome.ui.login.LoginActivity;
 import iot.app.smarthome.vm.mine.MineViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -98,6 +102,21 @@ public class MineFragment extends Fragment {
 
             }
         });
+        //实训2.2退出登录
+        Button logoutBtn = root.findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences pref = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.clear();
+                editor.commit();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                Toast.makeText(getActivity(), "退出登录成功", Toast.LENGTH_SHORT).show();
+//                getActivity().finish();
+                startActivity(intent);
+            }
+        });
 
         return root;
     }
@@ -123,12 +142,6 @@ public class MineFragment extends Fragment {
                 Toast.makeText(getActivity(), "刷新用户信息成功", Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    public void onResume() {
-        super.onResume();
-
-
     }
 
 

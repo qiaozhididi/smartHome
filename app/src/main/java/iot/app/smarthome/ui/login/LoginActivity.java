@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                         ResMsg<UserTokenVo> resMsg = response.body();
                         if (resMsg.success()) {
                             //TODO: 登录成功并将数据通过SharedPreferences保存到data.xml文件中
+                            //实训2.1
                             UserTokenVo vo = resMsg.getData();
                             Long expiredTs = resMsg.getData().getExpiredTs();
                             editor = getSharedPreferences(PrefConst.DEFAULT_FILE_NAME, MODE_PRIVATE).edit();
