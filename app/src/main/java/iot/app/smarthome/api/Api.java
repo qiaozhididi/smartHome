@@ -1,10 +1,15 @@
 package iot.app.smarthome.api;
 
+import android.database.Observable;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import iot.app.smarthome.model.login.LoginRequest;
 import iot.app.smarthome.model.user.UserInfoVo;
 import iot.app.smarthome.model.login.UserTokenVo;
 import iot.app.smarthome.model.message.ResMsg;
-//import iot.app.smarthome.model.user.UserInfoVo;
+import iot.app.smarthome.model.device.DeviceListVo;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -33,6 +38,9 @@ public interface Api {
 
     //TODO:请参考上面的代码实现获取当前用户信息API的方法
     @GET("/curUserInfo")
-    Call<ResMsg<UserInfoVo>> getUserInfo(@Query("token")String token);
+    Call<ResMsg<UserInfoVo>> getUserInfo(@Query("token") String token);
 
+    //TODO:实训3.1获取设备列表接口。
+    @GET("/device_all")
+    Call<ResMsg<List<DeviceListVo>>> getDeviceList(@Query("token") String token);
 }

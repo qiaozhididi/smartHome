@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             loginBtn.setEnabled(true);
                             startActivity(intent);
-                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                         } else {
                             //TODO: 登录失败
                             progressBar.setVisibility(View.GONE);
@@ -131,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //给ViewModel 的username设值，观察视图的用户名是否绑定对应的值
                 loginViewModel.getLoginVo().username.set("zhangsan");
+                loginViewModel.getLoginVo().password.set("123456");
             }
         });
     }

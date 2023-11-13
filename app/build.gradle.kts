@@ -83,4 +83,11 @@ dependencies {
 //    //修改kotlin-stdlib-jdk加载方式
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 
+    //实训课的包
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    implementation ("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
+    implementation ("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1")
+    implementation ("org.apache.commons:commons-lang3:3.8.1")
+
 }

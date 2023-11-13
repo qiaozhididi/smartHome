@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="mineViewModel"
             type="iot.app.smarthome.vm.mine.MineViewModel" />
