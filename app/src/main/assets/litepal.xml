@@ -15,7 +15,8 @@
 
     <list>
         <mapping class="iot.app.smarthome.model.user.UserInfoVo" />
-        <mapping class="iot.app.smarthome.model.device.TempVo"  />
+        <mapping class="iot.app.smarthome.model.device.DeviceListVo" />
+        <mapping class="iot.app.smarthome.model.device.TempVo" />
     </list>
 
     <!--

@@ -61,12 +61,20 @@ public class DeviceFragment extends Fragment {
                 getRemoteDeviceList();
                 if (swipeRefreshLayout.isRefreshing()) {
                     swipeRefreshLayout.setRefreshing(false);
+                    Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-//        getCachedDeviceList();
-        getRemoteDeviceList();
+        //如果本地存在在用户信息，则直接读取本地数据，否则读取远程API
+        if (reDeviceList.isEmpty()) {
+            getCachedDeviceList();
+            Toast.makeText(getActivity(), "本地数据", Toast.LENGTH_SHORT).show();
+        } else {
+            getRemoteDeviceList();
+            Toast.makeText(getActivity(), "网络数据", Toast.LENGTH_SHORT).show();
+        }
         return root;
+
     }
 
 
@@ -76,12 +84,9 @@ public class DeviceFragment extends Fragment {
     private void getCachedDeviceList() {
         //TODO:实验3.3 从Sqlite 读取用户设备信息，并绑定到recyclerView
         reDeviceList = LitePal.findAll(DeviceListVo.class);
-        if (reDeviceList.isEmpty()) {
-            Toast.makeText(getActivity(), "暂无数据", Toast.LENGTH_SHORT).show();
-            return;
-        }
         DeviceAdapter adapter = new DeviceAdapter(reDeviceList);
         recyclerView.setAdapter(adapter);
+
     }
 
     /**
@@ -102,9 +107,8 @@ public class DeviceFragment extends Fragment {
                     reDeviceList = resMsg.getData();
                     DeviceAdapter adapter = new DeviceAdapter(reDeviceList);
                     recyclerView.setAdapter(adapter);
-//                    insertCurDeviceListIntoDB(reDeviceList);
+                    insertCurDeviceListIntoDB(reDeviceList);
                 }
-//                }
             }
 
             @Override
@@ -115,8 +119,9 @@ public class DeviceFragment extends Fragment {
     }
 
     public void insertCurDeviceListIntoDB(List<DeviceListVo> reDeviceList) {
+        LitePal.initialize(getActivity());
 //        LitePal.deleteAll("DeviceListVo", null);
-//        LitePal.saveAll(reDeviceList);
+        LitePal.saveAll(reDeviceList);
     }
 
     @Override
