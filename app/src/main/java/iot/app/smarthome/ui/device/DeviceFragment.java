@@ -61,18 +61,16 @@ public class DeviceFragment extends Fragment {
                 getRemoteDeviceList();
                 if (swipeRefreshLayout.isRefreshing()) {
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
+                    getRemoteDeviceList();
+                    Toast.makeText(getActivity(), "刷新成功，同步网络数据", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        //如果本地存在在用户信息，则直接读取本地数据，否则读取远程API
-        if (reDeviceList.isEmpty()) {
-            getCachedDeviceList();
-            Toast.makeText(getActivity(), "本地数据", Toast.LENGTH_SHORT).show();
-        } else {
-            getRemoteDeviceList();
-            Toast.makeText(getActivity(), "网络数据", Toast.LENGTH_SHORT).show();
-        }
+        //如果不下拉刷新就显示本地数据
+        getCachedDeviceList();
+        Toast.makeText(getActivity(), "本地数据", Toast.LENGTH_SHORT).show();
+
+
         return root;
 
     }
@@ -93,7 +91,7 @@ public class DeviceFragment extends Fragment {
      * 通过远程 API 获取用户设备列表信息
      */
     private void getRemoteDeviceList() {
-        //TODO:实验3.2 通过远程API，获取设备列表，并绑定到 recyclerView
+        //TODO:实训3.2 通过远程API，获取设备列表，并绑定到 recyclerView
         SharedPreferences pref = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
         String token = pref.getString("KEY_TOKEN", "");
         Api httpApi = Api.RETROFIT.create(Api.class);
