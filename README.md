@@ -1,6 +1,10 @@
-# 《物联网移动APP设计及开发》课程实验代码-----SmartPhone
+# 《物联网移动APP设计及开发》课程实验+实训代码-----SmartPhone
 
-更新时间：2023年10月13日 22点48分
+更新时间：2023年11月14日 11点21分
+
+## 实验课
+
+课程资源：[《物联网移动APP设计及开发》 课程资源汇总 | Heis (gitee.io)](https://heis.gitee.io/docs/iot-android/)
 
 ##### Part 3 - 物联网移动App架构设计 
 
@@ -47,3 +51,39 @@
 #### Part 7 - APP的设备适配与发布
 
 实验7 打包 SmartHome 项目
+
+
+
+## 实训课
+
+==注意：==本代码是不是使用的实训课程资源里面的代码，只是将实验课程的代码增加上了实训项目的基础代码及部分文件。
+
+课程资源：[《物联网移动APP设计及开发实训》课程资源汇总 | Heis (gitee.io)](https://heis.gitee.io/docs/iot-android-training/)
+
+#### Part 2 - 完善登录和退出功能
+
+文档地址：https://heis.gitee.io/docs/iot-android-training/iot-android-training-02/
+
+实验2.1 完善 Smart Home 项目登录功能
+
+实验2.2 完善 Smart Home 项目退出功能
+
+#### Part 3 - 完善获取用户设备功能
+
+文档地址：https://heis.gitee.io/docs/iot-android-training/iot-android-training-03/
+
+实验3.1 Smart Home 实现获取用户设备列表功能
+
+实验3.2 Smart Home 实现设备信息绑定到 RecyclerView
+
+实验3.3 Smart Home 实现保存用户设备信息到Sqlite
+
+#### Part 4 - 完善 MQTT 控制设备功能
+
+文档地址：https://heis.gitee.io/docs/iot-android-training/iot-android-training-04/
+
+实验4.1 Smart Home 实现 MQTT 客户端功能
+
+实验4.2 Smart Home 实现 LightBulbActivity（智能灯设备控制界面）
+
+ 实验4.3 通过 LightBulbActivity 发送 MQTT 消息控制智能灯开关状态。
