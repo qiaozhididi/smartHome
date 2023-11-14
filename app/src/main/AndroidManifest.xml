@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 允许程序获取网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序获取网络权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
 
     <application
         android:name=".SmarthomeApplication"
@@ -17,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHome"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.device.LightBulbActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.device.TempHumStatisticActivity"
             android:exported="true" />
@@ -54,6 +59,9 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+        
+        <!--MQTT Service 需要-->
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
     </application>
 
 </manifest>

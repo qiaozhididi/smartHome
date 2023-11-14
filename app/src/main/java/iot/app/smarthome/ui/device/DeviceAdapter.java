@@ -1,5 +1,6 @@
 package iot.app.smarthome.ui.device;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,11 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
                 //获取到设备信息
                 DeviceListVo dev = mDeviceList.get(position);
                 //TODO:实验4.2 跳转到相应的设备控制界面
+                //点击设备同时把IoTID传给LightBulbActivity
+                Intent intent = new Intent(v.getContext(), LightBulbActivity.class);
+                intent.putExtra("iotid", dev.getIotId());
+                v.getContext().startActivity(intent);
+
             }
         });
         holder.devImg.setOnClickListener(new View.OnClickListener() {
