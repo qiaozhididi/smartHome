@@ -31,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
         String token = pref.getString("KEY_TOKEN", "");
         if (!"".equals(token) && new Date().getTime() < tokenExpiredTs) {
             //如果令牌不为空，而且令牌没过期，正常启动 MainActivity
-            Intent intent = getIntent();
-            String userid = intent.getStringExtra("userid");
-            Toast.makeText(this, "欢迎你" + userid, Toast.LENGTH_SHORT).show();
+//            Intent intent = getIntent();
+//            String userid = intent.getStringExtra("userid");
+            //从SharePreference中获取userid
+            String userid = pref.getString("KEY_CUR_USERID", "");
+            Toast.makeText(this, "欢迎您" + userid, Toast.LENGTH_SHORT).show();
         } else {
             //否则跳转到 LoginActivity 重新登录。
+            Toast.makeText(this, "您的登录信息已过期，请重新登录！", Toast.LENGTH_LONG).show();
             startActivity(new Intent(this, LoginActivity.class));
         }
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());

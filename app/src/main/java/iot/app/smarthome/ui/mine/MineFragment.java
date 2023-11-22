@@ -33,6 +33,8 @@ import iot.app.smarthome.databinding.FragmentMineBinding;
 import iot.app.smarthome.model.user.UserInfoVo;
 import iot.app.smarthome.model.message.ResMsg;
 import iot.app.smarthome.model.utils.FileUtils;
+import iot.app.smarthome.ui.device.TempHumStatisticActivity;
+import iot.app.smarthome.ui.device.ThermometerActivity;
 import iot.app.smarthome.ui.login.LoginActivity;
 import iot.app.smarthome.vm.mine.MineViewModel;
 import retrofit2.Call;
@@ -117,6 +119,27 @@ public class MineFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        Button Chart1 = root.findViewById(R.id.tempBtn1);
+        Chart1.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          Intent intent = new Intent(getActivity(), ThermometerActivity.class);
+                                          startActivity(intent);
+                                      }
+
+                                  }
+        );
+        Button Chart2 = root.findViewById(R.id.tempBtn2);
+        Chart2.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          Intent intent = new Intent(getActivity(), TempHumStatisticActivity.class);
+                                          startActivity(intent);
+                                      }
+
+                                  }
+        );
 
         return root;
     }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mineViewModel"
             type="iot.app.smarthome.vm.mine.MineViewModel" />
@@ -57,6 +58,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="退出" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/tempBtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="图表1"></Button>
+
+                <Button
+                    android:id="@+id/tempBtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="图表2"></Button>
+            </LinearLayout>
         </LinearLayout>
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
