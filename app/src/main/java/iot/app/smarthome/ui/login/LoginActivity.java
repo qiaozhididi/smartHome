@@ -99,12 +99,13 @@ public class LoginActivity extends AppCompatActivity {
                             editor = getSharedPreferences(PrefConst.DEFAULT_FILE_NAME, MODE_PRIVATE).edit();
                             editor.putString(PrefConst.KEY_CUR_USERID, vo.getUserId());
                             editor.putString(PrefConst.KEY_TOKEN, vo.getToken());
-                            editor.putLong(PrefConst.KEY_TOKEN_EXPIRED_TS,expiredTs);
+                            editor.putLong(PrefConst.KEY_TOKEN_EXPIRED_TS, expiredTs);
                             editor.apply();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent.putExtra("userid", vo.getUserId());
+                            //TODO: 实验5.1使用Intent传userId
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                            intent.putExtra("userid", vo.getUserId());
                             progressBar.setVisibility(View.GONE);
                             loginBtn.setEnabled(true);
                             startActivity(intent);
