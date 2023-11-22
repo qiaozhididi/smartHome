@@ -50,7 +50,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
                 int position = holder.getAdapterPosition();
                 //获取到设备信息
                 DeviceListVo dev = mDeviceList.get(position);
-                //TODO:实验4.2 跳转到相应的设备控制界面
+                //TODO:实训4.2 跳转到相应的设备控制界面
                 //点击设备同时把IoTID传给LightBulbActivity
                 Intent intent = new Intent(v.getContext(), LightBulbActivity.class);
                 intent.putExtra("iotid", dev.getIotId());

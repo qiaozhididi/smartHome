@@ -75,7 +75,7 @@ public class SmartMqtt {
         this.context = context;
         //配置连接信息
         mqttConnectOptions = new MqttConnectOptions();
-        //TODO:实验3.1 设置MQTT地址，注意要进行地址转换
+        //TODO:实训3.1 设置MQTT地址，注意要进行地址转换
         mqttConnectOptions.setServerURIs(new String[]{"tcp://10.0.2.2:1883"});
 //        mqttConnectOptions.setServerURIs(new String[]{});
         //是否清除缓存
@@ -84,9 +84,9 @@ public class SmartMqtt {
         mqttConnectOptions.setAutomaticReconnect(true);
         //设置心跳,30s
         mqttConnectOptions.setKeepAliveInterval(30);
-        //TODO:实验3.1 登录用户名
+        //TODO:实训3.1 登录用户名
         mqttConnectOptions.setUserName("iotweb");
-        //TODO:实验3.1 登录密码
+        //TODO:实训3.1 登录密码
         mqttConnectOptions.setPassword("iotweb".toCharArray());
         //超时时间
         mqttConnectOptions.setConnectionTimeout(100);

@@ -40,37 +40,40 @@ public class ThermometerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_thermometer);
         LineChart lineChart = findViewById(R.id.lineChart);
         List<Entry> list = new ArrayList<>();
-        //其中两个数字对应的分别是 X轴 Y轴。时间（小时）和温度
-//        list.add(new Entry(7.0F, 26F));
-//        list.add(new Entry(8.0F, 29F));
-//        list.add(new Entry(9.0F, 30F));
-//        list.add(new Entry(10.0F, 31F));
-//        list.add(new Entry(11.0F, 32F));
 
-        //TODO： tempvo获取数据并使用litepal保存到本地sqlite，然后在通过数据库获取保存在本地的数据
-//        LitePal.deleteAll(TempVo.class);
-//        List<TempVo> tempVoList = new ArrayList<>();
-//        for (Entry entry : list) {
-//            // 将Entry的X轴值（时间）转换为整数并保存到tempVo的小时字段
-//            float x = entry.getX();
-//            int hour = Math.round(x);
-//            TempVo tempVo = new TempVo();
-//            tempVo.setDateHour(hour);
-//
-//            // 将Entry的Y轴值（温度）保存到tempVo的温度字段
-//            float temperature = entry.getY();
-//            tempVo.setDegree(temperature);
-//            tempVoList.add(tempVo);
-//        }
-//        //循环环保存tempVoList中的数据
-//        for (TempVo tempVo : tempVoList) {
-//            tempVo.save();
-//        }
 
         //从本地的sqlite数据库中获取数据
         List<TempVo> tempVoList = LitePal.findAll(TempVo.class);
-        for (TempVo tempVo : tempVoList) {
-            list.add(new Entry(tempVo.getDateHour(), tempVo.getDegree()));//将数据保存到list中，以便于绘制图表。
+        if (tempVoList.size() == 0) {
+//其中两个数字对应的分别是 X轴 Y轴。时间（小时）和温度
+            list.add(new Entry(7.0F, 26F));
+            list.add(new Entry(8.0F, 29F));
+            list.add(new Entry(9.0F, 30F));
+            list.add(new Entry(10.0F, 31F));
+            list.add(new Entry(11.0F, 32F));
+//           TODO： tempvo获取数据并使用litepal保存到本地sqlite，然后在通过数据库获取保存在本地的数据
+//            List<TempVo> tempVoList = new ArrayList<>();
+            LitePal.deleteAll(TempVo.class);
+            for (Entry entry : list) {
+                // 将Entry的X轴值（时间）转换为整数并保存到tempVo的小时字段
+                float x = entry.getX();
+                int hour = Math.round(x);
+                TempVo tempVo = new TempVo();
+                tempVo.setDateHour(hour);
+
+                // 将Entry的Y轴值（温度）保存到tempVo的温度字段
+                float temperature = entry.getY();
+                tempVo.setDegree(temperature);
+                tempVoList.add(tempVo);
+            }
+            //循环环保存tempVoList中的数据
+            for (TempVo tempVo : tempVoList) {
+                tempVo.save();
+            }
+        } else {
+            for (TempVo tempVo : tempVoList) {
+                list.add(new Entry(tempVo.getDateHour(), tempVo.getDegree()));//将数据保存到list中，以便于绘制图表。
+            }
         }
 
         //设置图表的数据

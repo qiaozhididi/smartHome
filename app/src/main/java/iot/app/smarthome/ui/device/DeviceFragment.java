@@ -61,6 +61,7 @@ public class DeviceFragment extends Fragment {
                 getRemoteDeviceList();
                 if (swipeRefreshLayout.isRefreshing()) {
                     swipeRefreshLayout.setRefreshing(false);
+                    LitePal.deleteAll("DeviceListVo");
                     getRemoteDeviceList();
                     Toast.makeText(getActivity(), "刷新成功，同步网络数据", Toast.LENGTH_SHORT).show();
                 }
@@ -80,7 +81,7 @@ public class DeviceFragment extends Fragment {
      * 获取缓存在Sqlite的用户的设备信息
      */
     private void getCachedDeviceList() {
-        //TODO:实验3.3 从Sqlite 读取用户设备信息，并绑定到recyclerView
+        //TODO:实训3.3 从Sqlite 读取用户设备信息，并绑定到recyclerView
         reDeviceList = LitePal.findAll(DeviceListVo.class);
         DeviceAdapter adapter = new DeviceAdapter(reDeviceList);
         recyclerView.setAdapter(adapter);
